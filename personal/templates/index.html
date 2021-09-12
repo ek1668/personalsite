@@ -1,0 +1,142 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% block content %}
+        <!-- Page Content-->
+        <div class="container-fluid p-0">
+            <!-- About-->
+            <section class="resume-section" id="about">
+                <div class="resume-section-content">
+                    
+                    <h1 class="mb-0">
+                        {{ personals.0.fname }}
+                        <span class="text-primary">{{ personals.0.lname }}</span>
+                        <h2>{{ personals.0.title }}</h2>
+                        
+                    </h1>
+                    <div class="subheading mb-5">
+                        {{personals.0.city}}, {{personals.0.state}} {{personals.0.zipcode}} · {{personals.0.phonenumber}} ·
+                        <a href="mailto:name@email.com">{{personals.0.email}}</a>
+                    </div>
+                    <p class="lead mb-5">{{personals.0.about}}</p>
+                    <div class="social-icons">
+                        <a class="social-icon" href="https://www.linkedin.com/in/eduard-krayz-m-s-8772a224/"><i class="fab fa-linkedin-in"></i></a>
+                        <a class="social-icon" href="#!"><i class="fab fa-github"></i></a>
+                        <a class="social-icon" href="#!"><i class="fab fa-twitter"></i></a>
+                        <a class="social-icon" href="#!"><i class="fab fa-facebook-f"></i></a>
+                    </div>
+                </div>
+            </section>
+            <hr class="m-0" />
+            <!-- Experience-->
+            <section class="resume-section" id="experience">
+                <div class="resume-section-content">
+                    <h2 class="mb-5">Experience</h2>
+                    {% for experience in experiences %}
+                    <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
+                        <div class="flex-grow-1">
+                            <h3 class="mb-0">{{experience.position}}</h3>
+                            <div class="subheading mb-3">{{experience.company}}</div>
+                            <p>{{experience.description}}</p>
+                        </div>
+                        {% if experience.present == False %}
+                            <div class="flex-shrink-0"><span class="text-primary">{{experience.fromdate | date:'F Y'}} - {{experience.todate | date:'F Y'}}</span></div>
+                        {% else %}
+                            <div class="flex-shrink-0"><span class="text-primary">{{experience.fromdate | date:'F Y'}} - Present</span></div>
+                        {% endif %}
+                    </div>
+                    {% endfor %}
+                </div>
+            </section>
+            <hr class="m-0" />
+            <!-- Education-->
+            <section class="resume-section" id="education">
+                <div class="resume-section-content">
+                    <h2 class="mb-5">Education</h2>
+                    {% for education in educations %}
+                    <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
+                        <div class="flex-grow-1">
+                            <h3 class="mb-0">{{education.university}}</h3>
+                            <div class="subheading mb-3">{{education.degree}}</div>
+                            <div>{{education.field}}</div>
+                        </div>
+                        <div class="flex-shrink-0"><span class="text-primary">{{education.graduation | date:'F Y'}}</span></div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </section>
+            <hr class="m-0" />
+            <!-- Skills-->
+            <section class="resume-section" id="skills">
+                <div class="resume-section-content">
+                    <h2 class="mb-5">Skills</h2>
+                    <div class="subheading mb-3">Programming Languages & Tools</div>
+                    <ul class="list-inline dev-icons">
+                        <li class="list-inline-item"><i class="fab fa-python"></i></li>
+                        <li class="list-inline-item"><i class="fab fa-java"></i></li>
+                        <li class="list-inline-item"><i class="fab fa-git"></i></li>
+                        <li class="list-inline-item"><i class="fab fa-linux"></i></li>
+                        <li class="list-inline-item"><i class="fa fa-database"></i></li>
+                        <li class="list-inline-item"><i class="fab fa-html5"></i></li>
+                        
+                        <li class="list-inline-item"><i class="fab fa-css3-alt"></i></li>
+                        
+                        <li class="list-inline-item"><i class="fab fa-angular"></i></li>
+                        <li class="list-inline-item"><i class="fab fa-react"></i></li>
+                        <li class="list-inline-item"><i class="fab fa-node-js"></i></li>
+                        <li class="list-inline-item"><i class="fab fa-sass"></i></li>
+                        
+                    </ul>
+                    <div class="subheading mb-3">Workflow</div>
+                    <ul class="fa-ul mb-0">
+                        {% for skill in skills %}
+                        <li>
+                            <span class="fa-li"><i class="fas fa-check"></i></span>
+                            {{skill.workflow_skill}}
+                            <!-- Mobile-First, Responsive Design -->
+                        </li>
+                        {% endfor %}
+                        <!-- <li>
+                            <span class="fa-li"><i class="fas fa-check"></i></span>
+                            Cross Browser Testing & Debugging
+                        </li>
+                        <li>
+                            <span class="fa-li"><i class="fas fa-check"></i></span>
+                            Cross Functional Teams
+                        </li>
+                        <li>
+                            <span class="fa-li"><i class="fas fa-check"></i></span>
+                            Agile Development & Scrum
+                        </li> -->
+                    </ul>
+                </div>
+            </section>
+            <hr class="m-0" />
+            <!-- Interests-->
+            <!-- <section class="resume-section" id="interests">
+                <div class="resume-section-content">
+                    <h2 class="mb-5">Interests</h2>
+                    <p>Apart from being a web developer, I enjoy most of my time being outdoors. In the winter, I am an avid skier and novice ice climber. During the warmer months here in Colorado, I enjoy mountain biking, free climbing, and kayaking.</p>
+                    <p class="mb-0">When forced indoors, I follow a number of sci-fi and fantasy genre movies and television shows, I am an aspiring chef, and I spend a large amount of my free time exploring the latest technology advancements in the front-end web development world.</p>
+                </div>
+            </section> -->
+            <hr class="m-0" />
+            <!-- Awards-->
+            <section class="resume-section" id="certificates">
+                <div class="resume-section-content">
+                    <h2 class="mb-5">Certifications</h2>
+                    <ul class="fa-ul mb-0">
+                        {% for certification in certifications %}
+                        <li>
+                            <span class="fa-li"><i class="fas fa-trophy text-warning"></i></span>
+                            {{certification.issuer}} - {{certification.name}} | Date Issued: {{certification.dateissued | date:'F Y'}}
+                            
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </section>
+        </div>
+        <!-- Bootstrap core JS-->
+        
+{% endblock %}

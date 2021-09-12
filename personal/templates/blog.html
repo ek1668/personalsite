@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+<section class="resume-section" id="experience">
+  <div class="resume-section-content">
+      <h2 class="mb-5">Blog</h2>
+      {% for post in posts reversed %}
+      <div class="d-flex flex-column flex-md-row justify-content-between mb-5" style="background-color: white; padding: 20px; margin-top: 20px;">
+          <div class="flex-grow-1">
+            <a style="text-decoration: none;" href="./post/{{post.id}}">
+              <h3 class="mb-0">{{post.title}}</h3>
+              
+              <p>{{post.body|truncatewords:20}}</p>
+            </a>
+          </div>
+          
+              <div class="flex-shrink-0"><span class="text-primary">{{post.created_at | date:'F j, Y'}}</span></div>
+         
+      </div>
+      {% endfor %}
+  </div>
+</section>
+{% endblock %}

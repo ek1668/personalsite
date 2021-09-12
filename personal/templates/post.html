@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+<section class="resume-section" id="experience">
+  <div class="resume-section-content">
+    <div class="d-flex flex-column flex-md-row justify-content-between mb-5" style="background-color: white; padding: 20px; margin-top: 20px;">
+      <div class="flex-grow-1">
+        <h2>{{posts.title}}</h2>
+        <h5>{{posts.created_at | date:'F j, Y'}}</h5>
+        <p>{{posts.body}}</p>
+      </div>
+      
+    </div>
+  </div>
+</section>
+
+
+{% endblock %}
